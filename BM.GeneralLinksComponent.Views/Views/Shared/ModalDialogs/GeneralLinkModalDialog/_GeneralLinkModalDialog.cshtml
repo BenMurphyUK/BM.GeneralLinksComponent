@@ -1,0 +1,239 @@
+﻿@using BM.GeneralLinksComponent.Models
+@using BM.GeneralLinksComponent.Models.LinkTypes
+@using Kentico.Web.Mvc
+@using Kentico.Components.Web.Mvc.Dialogs
+
+@model BM.GeneralLinksComponent.Models.GeneralLink
+@{
+    Layout = null;
+    var externalLink = new ExternalLink();
+    var internalLink = new InternalLink();
+    var emailLink = new EmailLink();
+    var phoneNumberLink = new PhoneNumberLink();
+    var testLinkButtonId = "testLinkButton";
+    var customCssClassesDropdownId = "customCssClassesDropdown";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Kentico().ModalDialogScript()
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Kentico/Content/ModalDialogs/GeneralLinkModalDialog/generalLinkModalDialog.css" rel="stylesheet" type="text/css">
+    <!--These validation libraries need to be included for unobtrusive validation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="general-link" id="js-general-link"
+             data-link-text-textbox-id="@Html.IdFor(x => x.LinkText)"
+             data-link-type-dropdown-id="@Html.IdFor(x => x.LinkType)"
+             data-link-type-external="@((int)LinkType.ExternalLink)"
+             data-link-type-internal="@((int)LinkType.InternalLink)"
+             data-link-type-mailto="@((int)LinkType.Mailto)"
+             data-link-type-phone-number="@((int)LinkType.PhoneNumber)"
+             data-link-type-anchor-or-query-string-only="@((int)LinkType.AnchorOrQueryStringOnly)"
+             data-external-link-url-textbox-id="@Html.IdFor(x => externalLink.Url)"
+             data-internal-link-url-textbox-id="@Html.IdFor(x => internalLink.Url)"
+             data-internal-link-type-textbox-id="@Html.IdFor(x => internalLink.InternalReferenceType)"
+             data-internal-link-guid-textbox-id="@Html.IdFor(x => internalLink.InternalReferenceGuid)"
+             data-mailto-email-address-textbox-id="@Html.IdFor(x => emailLink.EmailAddress)"
+             data-mailto-email-cc-textbox-id="@Html.IdFor(x => emailLink.EmailCc)"
+             data-mailto-email-bcc-textbox-id="@Html.IdFor(x => emailLink.EmailBcc)"
+             data-mailto-email-subject-textbox-id="@Html.IdFor(x => emailLink.EmailSubject)"
+             data-mailto-email-body-textbox-id="@Html.IdFor(x => emailLink.EmailBody)"
+             data-phone-number-textbox-id="@Html.IdFor(x => phoneNumberLink.PhoneNumber)"
+             data-anchor-or-query-string-textbox-id="@Html.IdFor(x => x.AnchorOrQueryString)"
+             data-test-link-button-id="@testLinkButtonId"
+             data-open-in-new-tab-checkbox-id="@Html.IdFor(x => x.OpenInNewTab)"
+             data-custom-css-classes-dropdown-id="@customCssClassesDropdownId"
+             data-custom-css-classes-textbox-id="@Html.IdFor(x => x.CustomCssClasses)">
+            <div class="row">
+                <div class="column column__label">
+                    @Html.LabelFor(x => x.LinkText)
+                </div>
+                <div class="column column__input">
+                    <div class="form-control">
+                        @Html.TextBoxFor(x => x.LinkText)
+                        @Html.ValidationMessageFor(x => x.LinkText)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column column__label">
+                    @Html.LabelFor(x => x.LinkType)
+                </div>
+                <div class="column column__input">
+                    <div class="form-control">
+                        @Html.EnumDropDownListFor(x => x.LinkType, new { onchange = "linkTypeDropdownChanged(this)" })
+                        @Html.ValidationMessageFor(x => x.LinkType)
+                    </div>
+                </div>
+            </div>
+            <div id="js-link-type-validators">
+                <!-- External Link -->
+                <div class="js-link-type" data-link-type-for="@((int)LinkType.ExternalLink)">
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(x => externalLink.Url)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(x => externalLink.Url, new { oninput = "enableOrDisableTestLink()" })
+                                @Html.ValidationMessageFor(x => externalLink.Url)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Internal Link -->
+                <div class="js-link-type hidden" data-link-type-for="@((int)LinkType.InternalLink)">
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(x => internalLink.Url)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(x => internalLink.Url, new { disabled = "disabled" })
+                                @Html.ValidationMessageFor(x => internalLink.Url)
+                                <button type="button" onclick="openUrlSelector();" class="select-internal-button">Select internal</button>
+                                @Html.HiddenFor(x => internalLink.InternalReferenceType)
+                                @Html.HiddenFor(x => internalLink.InternalReferenceGuid)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mailto -->
+                <div class="js-link-type hidden" data-link-type-for="@((int)LinkType.Mailto)">
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(x => emailLink.EmailAddress)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(x => emailLink.EmailAddress, new { oninput = "enableOrDisableTestLink()" })
+                                @Html.ValidationMessageFor(x => emailLink.EmailAddress)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(x => emailLink.EmailCc)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(x => emailLink.EmailCc)
+                                @Html.ValidationMessageFor(x => emailLink.EmailCc)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(m => emailLink.EmailBcc)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(m => emailLink.EmailBcc)
+                                @Html.ValidationMessageFor(m => emailLink.EmailBcc)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(m => emailLink.EmailSubject)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(m => emailLink.EmailSubject)
+                                @Html.ValidationMessageFor(m => emailLink.EmailSubject)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(m => emailLink.EmailBody)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextAreaFor(m => emailLink.EmailBody)
+                                @Html.ValidationMessageFor(m => emailLink.EmailBody)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phone Number -->
+                <div class="js-link-type hidden" data-link-type-for="@((int)LinkType.PhoneNumber)">
+                    <div class="row">
+                        <div class="column column__label">
+                            @Html.LabelFor(x => phoneNumberLink.PhoneNumber)
+                        </div>
+                        <div class="column column__input">
+                            <div class="form-control">
+                                @Html.TextBoxFor(x => phoneNumberLink.PhoneNumber, new { oninput = "enableOrDisableTestLink()" })
+                                @Html.ValidationMessageFor(x => phoneNumberLink.PhoneNumber)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column column__label">
+                        @Html.LabelFor(x => x.AnchorOrQueryString)
+                    </div>
+                    <div class="column column__input">
+                        <div class="form-control">
+                            @Html.TextBoxFor(x => x.AnchorOrQueryString, new { oninput = "enableOrDisableTestLink()" })
+                            @Html.ValidationMessageFor(x => x.AnchorOrQueryString)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column column__label">
+                </div>
+                <div class="column column__input">
+                    <div class="form-control">
+                        <button type="button" id="@testLinkButtonId" class="test-link-btn" onclick="testLink();" disabled>Test link</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column column__label">
+                    @Html.LabelFor(x => x.OpenInNewTab)
+                </div>
+                <div class="column column__input">
+                    <div class="form-control">
+                        <label class="custom-checkbox-container">
+                            @Html.CheckBoxFor(x => x.OpenInNewTab)
+                            <span class="checkmark"></span>
+                        </label>
+                        @Html.ValidationMessageFor(x => x.OpenInNewTab)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column column__label">
+                    @Html.LabelFor(x => x.CustomCssClasses)
+                </div>
+                <div class="column column__input">
+                    <div class="form-control custom-css-classes" id="js-custom-css-classes">
+                        @Html.TextBoxFor(x => x.CustomCssClasses)
+                        @Html.ValidationMessageFor(x => x.CustomCssClasses)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <script src="~/Kentico/Content/ModalDialogs/GeneralLinkModalDialog/generalLinkModalDialog.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        if (document.readyState !== 'loading') {
+            initGeneralLinkModalDialog();
+        } else {
+            document.addEventListener('DOMContentLoaded', function () {
+                initGeneralLinkModalDialog();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<authors>BenMurphyUK on Github</authors>
+		<owners>BenMurphyUK on Github</owners>
+		<projectUrl>https://github.com/BenMurphyUK/BM.GeneralLinksComponent</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/Kentico/devnet.kentico.com/master/marketplace/assets/generic-integration.png</iconUrl>
+		<!-- <icon>Icon.png</icon> -->
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<license type="expression">MIT</license>
+		<description>A Kentico Xperience 13 MVC general links custom form components for use as a widget property in the page builder.</description>
+		<!-- <releaseNotes>TODO</releaseNotes> -->
+		<copyright>Copyright © 2021</copyright>
+		<tags>kentico xperience component widget mvc link</tags>
+		<dependencies>
+				<dependency id="Kentico.Xperience.AspNet.Mvc5" version="13.0.52" />
+				<dependency id="Kentico.Xperience.AspNet.Mvc5.Libraries" version="13.0.52" />
+				<dependency id="Kentico.Xperience.Libraries" version="13.0.52" />
+				<!-- NewtonSoft.Json 12.0.3 -->
+		</dependencies>
+	</metadata>
+	<files>
+		<!-- Include the compiled views dll -->
+		<file src="bin\BM.GeneralLinksComponent.Views.dll" target="lib\net48" />
+		<file src="Kentico\Content\FormComponents\GeneralLinksComponent\generalLinksComponent.js" target="Kentico\Content\FormComponents\GeneralLinksComponent\generalLinksComponent.js" />
+		<file src="Kentico\Content\FormComponents\GeneralLinksComponent\generalLinksComponent.css" target="Kentico\Content\FormComponents\GeneralLinksComponent\generalLinksComponent.css" />
+		<file src="Kentico\Content\ModalDialogs\GeneralLinkModalDialog\generalLinkModalDialog.js" target="Kentico\Content\ModalDialogs\GeneralLinkModalDialog\generalLinkModalDialog.js" />
+		<file src="Kentico\Content\ModalDialogs\GeneralLinkModalDialog\generalLinkModalDialog.css" target="Kentico\Content\ModalDialogs\GeneralLinkModalDialog\generalLinkModalDialog.css" />
+	</files>
+</package>

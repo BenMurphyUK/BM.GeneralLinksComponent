@@ -1,0 +1,60 @@
+﻿@using BM.GeneralLinksComponent.Models.FormComponents
+@using Newtonsoft.Json
+@using System.Web.Mvc.Html
+
+@model  GeneralLinksComponent
+
+@{
+    var generalLinks = Model.GetValue();
+
+    var thisGeneralLinksIdentifier = Guid.NewGuid();
+
+    string dialogData = JsonConvert.SerializeObject(new
+    {
+        modalDialogUrl = Url.Action("Index", "GeneralLinkDialog"),
+        maxLinks = Model.MaxLinks,
+        customCssClasses = Model.CustomCssClasses,
+        tabs = Model.Tabs,
+        defaultTab = Model.DefaultTab,
+        pageRootPath = Model.PageRootPath,
+        mediaLibraryName = Model.MediaLibraryName,
+        mediaAllowedExtensions = Model.MediaAllowedExtensions,
+        attachmentAllowedExtensions = Model.AttachmentAllowedExtensions,
+        generalLinksIdentifier = thisGeneralLinksIdentifier,
+        componentValueTextboxId = Html.IdFor(x => x.Value).ToString()
+    });
+}
+
+<div class="js-all-general-links all-general-links" data-all-general-links-for="@thisGeneralLinksIdentifier" ondragover="onDragOver(event)">
+    @if (generalLinks != null && generalLinks.Any())
+    {
+        var generalLinksCount = generalLinks.Count();
+        foreach (var generalLink in generalLinks)
+        {
+            var generalLinkSerialized = JsonConvert.SerializeObject(generalLink);
+
+            <div class="js-general-link general-link" draggable="true" ondragstart="onDragStart(event)" ondragend="onDragEnd(event, @dialogData)" data-all-general-links-for="@thisGeneralLinksIdentifier">
+                <input class="ktc-form-control js-link-preview-textbox link-preview-textbox" readonly="" value="@generalLink.LinkText">
+                <button type="button" onclick="editGeneralLink(this.parentElement, @dialogData)" class="ktc-btn ktc-btn-default general-link-control-button">&#9998;</button>
+                <input class="js-general-link-value" type="hidden" value="@generalLinkSerialized">
+                <button class="general-link-control-button ktc-btn delete-button" onclick="deleteGeneralLink(this.parentElement, @dialogData)">&#10006;</button>
+            </div>
+        }
+        if (generalLinksCount < Model.MaxLinks)
+        {
+            <div class="js-general-link general-link general-link-empty">
+                <button type="button" onclick="addGeneralLink(this.parentElement, @dialogData)" class="js-general-link-add ktc-btn ktc-btn-default">Add</button>
+                <input class="js-general-link-value" type="hidden" value="">
+            </div>
+        }
+    }
+    else
+    {
+        <div class="js-general-link general-link general-link-empty">
+            <button type="button" onclick="addGeneralLink(this.parentElement, @dialogData)" class="js-general-link-add ktc-btn ktc-btn-default">Add</button>
+            <input class="js-general-link-value" type="hidden" value="">
+        </div>
+    }
+</div>
+
+@Html.HiddenFor(x => x.Value)

@@ -1,0 +1,41 @@
+﻿.all-general-links > * {
+    margin-bottom: 5px;
+}
+
+    .all-general-links > *:last-child {
+        margin-bottom: 0;
+    }
+
+.general-link {
+    display: flex !important;
+    max-width: 320px;
+}
+
+.link-preview-textbox {
+    flex-grow: 1;
+    margin-right: 0 !important;
+}
+
+    .link-preview-textbox:hover {
+        cursor: move;
+    }
+
+.dragging {
+    opacity: .5;
+}
+
+.general-link-control-button {
+    padding: 0 !important;
+    min-width: 44px;
+    margin-left: 5px !important;
+}
+
+.delete-button {
+    background-color: #ff4949;
+    color: #FFF;
+}
+
+    .delete-button:hover {
+        background-color: #f10000;
+        color: #FFF !important;
+    }

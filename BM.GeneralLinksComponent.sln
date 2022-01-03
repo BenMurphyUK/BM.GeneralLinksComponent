@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BM.GeneralLinksComponent", "BM.GeneralLinksComponent\BM.GeneralLinksComponent.csproj", "{6AC14661-2737-4859-9CC4-81B642AC0184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BM.GeneralLinksComponent.Views", "BM.GeneralLinksComponent.Views\BM.GeneralLinksComponent.Views.csproj", "{C58245AF-32B1-445E-842D-622C07CD2477}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AC14661-2737-4859-9CC4-81B642AC0184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC14661-2737-4859-9CC4-81B642AC0184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C58245AF-32B1-445E-842D-622C07CD2477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58245AF-32B1-445E-842D-622C07CD2477}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52ED0AD8-FB74-4353-B01A-DDEF8DB231BC}
+	EndGlobalSection
+EndGlobal
