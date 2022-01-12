@@ -11,7 +11,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<license type="expression">MIT</license>
 		<description>A Kentico Xperience 13 MVC general links custom form components for use as a widget property in the page builder.</description>
-		<!-- <releaseNotes>TODO</releaseNotes> -->
+		<releaseNotes>Initial release.</releaseNotes>
 		<copyright>Copyright © 2021</copyright>
 		<tags>kentico xperience component widget mvc link</tags>
 		<dependencies>
