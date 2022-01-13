@@ -1,12 +1,11 @@
-﻿using BM.GeneralLinksComponent.Models;
-using BM.GeneralLinksComponent.Models.LinkTypes;
+﻿using BM.GeneralLinksComponent.LinkTypes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 
 namespace BM.GeneralLinksComponent.JsonConverters
 {
-    public class GeneralLinkConverter : JsonConverter
+    internal class GeneralLinkConverter : JsonConverter
     {
         public override bool CanWrite => false;
         public override bool CanRead => true;

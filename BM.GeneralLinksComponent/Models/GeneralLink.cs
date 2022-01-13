@@ -1,11 +1,11 @@
 ﻿using BM.GeneralLinksComponent.Attributes;
 using BM.GeneralLinksComponent.JsonConverters;
-using BM.GeneralLinksComponent.Models.LinkTypes;
+using BM.GeneralLinksComponent.LinkTypes;
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BM.GeneralLinksComponent.Models
+namespace BM.GeneralLinksComponent
 {
     [Serializable]
     [JsonConverter(typeof(GeneralLinkConverter))]

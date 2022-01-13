@@ -1,4 +1,4 @@
-﻿using BM.GeneralLinksComponent.Models.FormComponents;
+﻿using BM.GeneralLinksComponent;
 using CMS.Helpers;
 using Kentico.Components.Web.Mvc.FormComponents;
 using Kentico.Forms.Web.Mvc;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 [assembly: RegisterFormComponent(GeneralLinksComponent.IDENTIFIER, typeof(GeneralLinksComponent), "General Links Component", IsAvailableInFormBuilderEditor = false)]
-namespace BM.GeneralLinksComponent.Models.FormComponents
+namespace BM.GeneralLinksComponent
 {
     public class GeneralLinksComponent : FormComponent<GeneralLinksComponentProperties, IEnumerable<GeneralLink>>
     {

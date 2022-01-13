@@ -9,9 +9,9 @@ using CMS;
 [assembly: AssemblyTitle("BM.GeneralLinksComponent.Views")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BenMurphyUK on GitHub")]
+[assembly: AssemblyCompany("BenMurphyUK")]
 [assembly: AssemblyProduct("BM.GeneralLinksComponent.Views")]
-[assembly: AssemblyCopyright("Copyright BenMurphyUK on GitHub ©  2021")]
+[assembly: AssemblyCopyright("Copyright BenMurphyUK © 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyDiscoverable]
@@ -33,5 +33,7 @@ using CMS;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
+//[assembly: AssemblyVersion("13.0.52.0")]
+//[assembly: AssemblyFileVersion("13.0.52.0")]
+[assembly: AssemblyVersion("6.0.0.0")]
+[assembly: AssemblyFileVersion("6.0.0.0")]

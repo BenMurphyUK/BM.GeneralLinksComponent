@@ -3,7 +3,7 @@ using Kentico.Components.Web.Mvc.FormComponents;
 using Kentico.Forms.Web.Mvc;
 using System.Collections.Generic;
 
-namespace BM.GeneralLinksComponent.Models.FormComponents
+namespace BM.GeneralLinksComponent
 {
     public class GeneralLinksComponentProperties : FormComponentProperties<IEnumerable<GeneralLink>>
     {

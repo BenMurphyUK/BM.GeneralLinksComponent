@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 
-namespace BM.GeneralLinksComponent.Models.LinkTypes
+namespace BM.GeneralLinksComponent.LinkTypes
 {
     [Serializable]
     public class InternalLink : BaseLink, ILink

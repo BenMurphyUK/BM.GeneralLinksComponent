@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace BM.GeneralLinksComponent.Attributes
 {
-    public class RequiredIfAttribute : ValidationAttribute, IClientValidatable
+    internal class RequiredIfAttribute : ValidationAttribute, IClientValidatable
     {
         private RequiredAttribute _innerAttribute = new RequiredAttribute();
         public string DependentProperty { get; set; }

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BM.GeneralLinksComponent.Models.LinkTypes
+namespace BM.GeneralLinksComponent.LinkTypes
 {
     [Serializable]
     public class EmailLink : BaseLink, ILink
