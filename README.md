@@ -8,7 +8,7 @@ This is a tool for Kentico Xperience 13 MVC (not Core, yet!) that provides a cus
 
 ## 🧩 Compatibility
 
-Can be used with Kentico Xperience sites that use version 13.0.52 and higher, and are using the .NET 5 MVC development model.
+Can be used with Kentico Xperience 13 sites and above, that are using the .NET 5 MVC development model.
 
 ## ➕ Installation
 
