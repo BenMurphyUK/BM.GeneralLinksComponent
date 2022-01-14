@@ -14,7 +14,7 @@ Can be used with Kentico Xperience sites that use version 13.0.52 and higher, an
 
 Using NuGet package manager console: 
 
-    Install-Package BM.GeneralLinksComponent
+    Install-Package BM.GeneralLinksComponent.Kentico.MVC
 
 ## ⚙️ Setup & Usage
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
 	<metadata>
-		<id>$id$</id>
+		<id>BM.GeneralLinksComponent.Kentico.MVC</id>
 		<version>$version$</version>
 		<authors>BenMurphyUK</authors>
 		<owners>BenMurphyUK</owners>
