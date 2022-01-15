@@ -28,7 +28,7 @@ In your widget properties class, you can use the following configurable properti
     [EditingComponentProperty(nameof(GeneralLinksComponent.Tabs), ContentSelectorTabs.Page | ContentSelectorTabs.Media | ContentSelectorTabs.Attachment)]
     [EditingComponentProperty(nameof(GeneralLinksComponent.DefaultTab), ContentSelectorTabs.Page)]
     [EditingComponentProperty(nameof(GeneralLinksComponent.PageRootPath), "/")]
-    [EditingComponentProperty(nameof(GeneralLinksComponent.MediaLibraryName), "CDE")]
+    [EditingComponentProperty(nameof(GeneralLinksComponent.MediaLibraryName), "MyMediaLibrary")]
     [EditingComponentProperty(nameof(GeneralLinksComponent.MediaAllowedExtensions), ".gif;.png;.jpg;.jpeg;.pdf")]
     [EditingComponentProperty(nameof(GeneralLinksComponent.AttachmentAllowedExtensions), ".gif;.png;.jpg;.jpeg;.pdf")]
     public IEnumerable<GeneralLink> Links { get; set; }
