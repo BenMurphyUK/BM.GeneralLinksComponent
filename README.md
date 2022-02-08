@@ -53,7 +53,7 @@ You can also use the following HTML helper extension methods in your views:
 
 You can **reorder** the links by dragging and dropping them to the desired order in the widget properties dialog. 
 
-## ⌨️ Contributions, 🐛 Bug Fixes, and📜 License
+## ⌨️ Contributions, 🐛 Bug Fixes, and 📜 License
 
 Feel free to Fork and submit pull requests to contribute.
 
